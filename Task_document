@@ -64,3 +64,18 @@ server {
 }
 
 
+Upload to docker HUB
+ docker login
+ docker tag nginx testingbugz/nginx_server
+ docker push testingbugz/nginx_server
+ 
+ Pull Image from docker hub: 
+ 
+ Nginx Server :
+        docker pull testingbugz/nginx_server
+        
+Apache_Server_one:
+       docker pull testingbugz/apache_server_one
+       
+Apache_server_Two:
+       docker pull testingbugz/apache_server_two
