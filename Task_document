@@ -69,13 +69,18 @@ Upload to docker HUB
  docker tag nginx testingbugz/nginx_server
  docker push testingbugz/nginx_server
  
- Pull Image from docker hub: 
+ Pull Image from docker hub and run it: 
  
  Nginx Server :
         docker pull testingbugz/nginx_server
+        docker run -it -d --name nginx_server  testingbugz/nginx_server
         
 Apache_Server_one:
        docker pull testingbugz/apache_server_one
+       docker run -it -d --name apache_server_one  testingbugz/apache_server_one
        
 Apache_server_Two:
        docker pull testingbugz/apache_server_two
+       docker run -it -d --name apache_server_two  testingbugz/apache_server_two
+       
+       
