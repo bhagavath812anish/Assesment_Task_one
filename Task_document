@@ -1,0 +1,66 @@
+Task_one_Steps:
+server1 : apache1 : 172.18.0.3
+server2 : apache2 : 172.18.0.4
+Nginx_server : nginx :172.18.0.2
+
+Docker image ubuntu
+       - docker pull ubuntu:latest 
+       - apt-get update
+       - apt-get upgrade
+       
+Install apache2 inside  docker container (server 1)
+       - docker run -it -d --name server1 ubuntu:latest
+       - apt-get install apache2 -y
+       - echo "" > /var/www/html/index.html
+       - create simple html save it for server 1
+
+Install apache2 inside  docker container (server 2)
+       - docker run -it -d --name server2 ubuntu:latest
+       - apt-get install apache2 -y
+       - echo "" > /var/www/html/index.html
+       - create simple html save it for server 2
+
+Install nginx 
+       - docker run -it -d --name nginx_server ubuntu:latest
+       - sudo apt-get install nginx
+       
+
+Commit this container as imag
+       -  docker commit -m "apache server_one" server 1 apacheone:latest
+       -  docker commit -m "apache server_two" server 2 apachetwo:latest
+       -  docker commit -m "nginx server" ngnix nginx:latest
+       
+Code added :
+
+Apache _1 : vim /var/www/html/index.html
+
+<!DOCTYPE html>
+<html>
+<body>
+<h1>server 1 Running</h1>
+</body>
+</html>
+
+Apache _2 : vim /var/www/html/index.html
+<!DOCTYPE html>
+<html>
+<body>
+<h1>server 2 Running</h1>
+</body>
+</html>
+
+
+Nginx Server : vim /etc/nginx/sites-available/default
+
+upstream backend  {
+
+server 172.18.0.3;  # server 1
+server 172.18.0.4;  # server 2
+}
+server {
+  location / {
+    proxy_pass  http://backend;
+  }
+}
+
+
