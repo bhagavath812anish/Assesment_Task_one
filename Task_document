@@ -1,7 +1,10 @@
+
 Task_one_Steps:
-server1 : apache1 : 172.18.0.3
-server2 : apache2 : 172.18.0.4
-Nginx_server : nginx :172.18.0.2
+Things i did:
+
+server1 :      apache1    : 172.18.0.3
+server2 :      apache2    : 172.18.0.4
+Nginx_server : nginx      : 172.18.0.2
 
 Docker image ubuntu
        - docker pull ubuntu:latest 
@@ -68,19 +71,25 @@ Upload to docker HUB
  docker login
  docker tag nginx testingbugz/nginx_server
  docker push testingbugz/nginx_server
+ ------------------------------------------------------------------------------------------------
+ Do it on Host:
  
  Pull Image from docker hub and run it: 
  
  Nginx Server :
         docker pull testingbugz/nginx_server
         docker run -it -d --name nginx_server  testingbugz/nginx_server
+        sudo service nginx restart
         
 Apache_Server_one:
        docker pull testingbugz/apache_server_one
        docker run -it -d --name apache_server_one  testingbugz/apache_server_one
+       sudo service apache2 start
        
 Apache_server_Two:
        docker pull testingbugz/apache_server_two
        docker run -it -d --name apache_server_two  testingbugz/apache_server_two
+        sudo service apache2 start
        
        
+Done !
